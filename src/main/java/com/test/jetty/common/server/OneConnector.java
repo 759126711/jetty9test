@@ -23,7 +23,7 @@ public class OneConnector {
         server.addConnector(http);
 
         // 设置一个处理器
-        server.setHandler(new HelloHandler("getting","body content"));
+        server.setHandler(new HelloHandler("getting", "body content"));
 
         // 启动Server
         server.start();

@@ -1,18 +1,17 @@
 package com.test.jetty.common.server;
 
-import java.io.IOException;
+import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.servlet.ServletHandler;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.eclipse.jetty.server.Server;
-import org.eclipse.jetty.servlet.ServletHandler;
+import java.io.IOException;
 
 public class MinimalServlets {
     public static void main(String[] args) throws Exception {
-        
+
         Server server = new Server(8080);
         //ServletHandler通过一个servlet创建了一个非常简单的context处理器
         //这个处理器需要在Server上注册

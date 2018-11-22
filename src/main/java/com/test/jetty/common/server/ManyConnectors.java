@@ -1,17 +1,11 @@
 package com.test.jetty.common.server;
 
+import org.eclipse.jetty.http.HttpVersion;
+import org.eclipse.jetty.server.*;
+import org.eclipse.jetty.util.ssl.SslContextFactory;
+
 import java.io.File;
 import java.io.FileNotFoundException;
-
-import org.eclipse.jetty.http.HttpVersion;
-import org.eclipse.jetty.server.Connector;
-import org.eclipse.jetty.server.HttpConfiguration;
-import org.eclipse.jetty.server.HttpConnectionFactory;
-import org.eclipse.jetty.server.SecureRequestCustomizer;
-import org.eclipse.jetty.server.Server;
-import org.eclipse.jetty.server.ServerConnector;
-import org.eclipse.jetty.server.SslConnectionFactory;
-import org.eclipse.jetty.util.ssl.SslContextFactory;
 
 /**
  * 一个有多个连接的Jetty例子
@@ -29,7 +23,7 @@ public class ManyConnectors {
 
         //创建一个不指定端口的Server，随后将直接配置连接和端口
         Server server = new Server();
-        
+
         //HTTP配置
         //HttpConfiguration是一个配置http和https属性的集合，默认的配置是http的
         //带secured的ui配置https的，
@@ -37,7 +31,7 @@ public class ManyConnectors {
         http_config.setSecureScheme("https");
         http_config.setSecurePort(8443);
         http_config.setOutputBufferSize(32768);
-        
+
         //HTTP连接
         //第一个创建的连接是http连接，传入刚才创建的配置信息，也可以重新设置新的配置，如端口，超时等
         ServerConnector http = new ServerConnector(server, new HttpConnectionFactory(http_config));
@@ -67,7 +61,7 @@ public class ManyConnectors {
         https.setIdleTimeout(500000);
 
         // 设置一个连接的集合
-        server.setConnectors(new Connector[] { http, https });
+        server.setConnectors(new Connector[]{http, https});
 
         // 设置一个处理器
         server.setHandler(new HelloHandler());

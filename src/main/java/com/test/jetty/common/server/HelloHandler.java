@@ -1,14 +1,13 @@
 package com.test.jetty.common.server;
 
-import java.io.IOException;
-import java.io.PrintWriter;
+import org.eclipse.jetty.server.Request;
+import org.eclipse.jetty.server.handler.AbstractHandler;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.eclipse.jetty.server.Request;
-import org.eclipse.jetty.server.handler.AbstractHandler;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 public class HelloHandler extends AbstractHandler {
     final String greeting;
@@ -41,11 +40,11 @@ public class HelloHandler extends AbstractHandler {
         if (body != null) {
             out.println(body);
         }
-        System.out.println("==request.getContextPath()=="+request.getContextPath());
-        System.out.println("==baseRequest.getContextPath()=="+baseRequest.getContextPath());
-        System.out.println("==request.getServletPath()=="+request.getServletPath());
-        System.out.println("==baseRequest.getServletPath()=="+baseRequest.getServletPath());
-        System.out.println("==target=="+target);
+        System.out.println("==request.getContextPath()==" + request.getContextPath());
+        System.out.println("==baseRequest.getContextPath()==" + baseRequest.getContextPath());
+        System.out.println("==request.getServletPath()==" + request.getServletPath());
+        System.out.println("==baseRequest.getServletPath()==" + baseRequest.getServletPath());
+        System.out.println("==target==" + target);
         baseRequest.setHandled(true);
     }
 }

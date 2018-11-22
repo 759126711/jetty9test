@@ -3,6 +3,7 @@ package com.test.jetty.common.server;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.DefaultServlet;
 import org.eclipse.jetty.servlet.ServletContextHandler;
+
 // 提供静态资源服务,可以在浏览器看到java.io.tmpdir对应目录下面的文件内容
 public class OneServletContext {
     public static void main(String[] args) throws Exception {

@@ -6,11 +6,12 @@ import org.eclipse.jetty.server.handler.DefaultHandler;
 import org.eclipse.jetty.server.handler.HandlerList;
 import org.eclipse.jetty.server.handler.ResourceHandler;
 import org.eclipse.jetty.server.handler.gzip.GzipHandler;
+
 /**
  * 资源处理器；
  * 本例子中的HandlerList包含ResourceHandler 和DefaultHandler，
  * DefaultHandler 将会为不能匹配到资源的生成一个格式良好的404回应
- * */
+ */
 public class FileServer {
     public static void main(String[] args) throws Exception {
         //创建一个基础的Jetty服务监听8080端口
@@ -23,14 +24,14 @@ public class FileServer {
         //配置ResourceHandler，设置哪个文件应该被提供给请求方
         //这个例子里，配置的是当前路径下的文件，但是实际上可以配置长任何jvm能访问到的地方
         resource_handler.setDirectoriesListed(true);
-        resource_handler.setWelcomeFiles(new String[] { "index.html" });
+        resource_handler.setWelcomeFiles(new String[]{"index.html"});
         resource_handler.setResourceBase(".");
 
         // 将resource_handler添加到GzipHandler中，然后将GzipHandler提供给Server
         GzipHandler gzip = new GzipHandler();
         server.setHandler(gzip);
         HandlerList handlers = new HandlerList();
-        handlers.setHandlers(new Handler[] { resource_handler, new DefaultHandler() });
+        handlers.setHandlers(new Handler[]{resource_handler, new DefaultHandler()});
         gzip.setHandler(handlers);
 
         server.start();
